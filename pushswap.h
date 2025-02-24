@@ -6,14 +6,14 @@
 /*   By: thdinh <thdinh@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 11:23:06 by thdinh            #+#    #+#             */
-/*   Updated: 2025/02/22 11:27:46 by thdinh           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:01:21 by thdinh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef PUSHSWAP_H
+#ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
-#include ".../libft/libft.h"
+# include "/Libft/libft.h"
 
 typedef struct s_list
 {
@@ -32,3 +32,8 @@ void rr(t_list **stack_a, t_list **stack_b);
 void rra(t_list **stack_a);
 void rrb(t_list **stack_b);
 void rrr(t_list **stack_a, t_list **stack_b);
+void	quicksort(t_list **a, t_list **b, int count);
+void	sort_three(t_list **a);
+void	sort_five(t_list **a, t_list **b);
+
+#endif
