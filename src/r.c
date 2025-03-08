@@ -32,18 +32,18 @@ static void rotate(t_list **stack)
 void ra(t_list **stack_a)
 {
     rotate(stack_a);
-    ft_putstr("ra\n");
+    ft_putstr_fd("ra\n", 1);
 }
 
 void rb(t_list **stack_b)
 {
     rotate(stack_b);
-    ft_putstr("rb\n");
+    ft_putstr_fd("rb\n", 1);
 }
 
 void rr(t_list **stack_a, t_list **stack_b)
 {
     rotate(stack_a);
     rotate(stack_b);
-    ft_putstr("rr\n");
+    ft_putstr_fd("rr\n", 1);
 }

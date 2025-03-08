@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s.c                                                :+:      :+:    :+:   */
+/*   p.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thdinh <thdinh@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 16:29:51 by thdinh            #+#    #+#             */
-/*   Updated: 2025/02/22 11:27:47 by thdinh           ###   ########.fr       */
+/*   Created: 2025/02/22 11:19:25 by thdinh            #+#    #+#             */
+/*   Updated: 2025/02/26 11:56:57 by thdinh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void swap(t_list **stack)
+void push(t_list **stack_a, t_list **stack_b)
 {
     t_list *tmp;
 
-    if (!*stack || !(*stack)->next)
-        return ;
-    tmp = *stack;
-    *stack = (*stack)->next;
-    tmp->next = (*stack)->next;
-    (*stack)->next = tmp;
+    if (!stack_b|| !*stack_b)
+        return;
+    tmp = *stack_b;
+    *stack_b = tmp->next;
+    tmp->next = *stack_a;
+    *stack_a = tmp;
 }
 
-void sa(t_list **stack_a)
+void pa(t_list **stack_a, t_list **stack_b)
 {
-    swap(stack_a);
-    ft_putstr("sa\n");
+    push(stack_a, stack_b);
+    ft_putstr_fd("pa\n", 1);
 }
 
-void sb(t_list **stack_b)
+void pb(t_list **stack_a, t_list **stack_b)
 {
-    swap(stack_b);
-    ft_putstr("sb\n");
-}
-
-void ss(t_list **stack_a, t_list **stack_b)
-{
-    swap(stack_a);
-    swap(stack_b);
-    ft_putstr("ss\n");
+    push(stack_b, stack_a);
+    ft_putstr_fd("pb\n", 1);
 }

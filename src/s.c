@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   s.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thdinh <thdinh@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 11:19:25 by thdinh            #+#    #+#             */
-/*   Updated: 2025/02/22 11:27:46 by thdinh           ###   ########.fr       */
+/*   Created: 2025/02/21 16:29:51 by thdinh            #+#    #+#             */
+/*   Updated: 2025/02/22 11:27:47 by thdinh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-t_list push(t_list **stack_a, t_list **stack_b)
+static void swap(t_list **stack)
 {
     t_list *tmp;
 
-    if (!stack_b|| !*stack_b)
+    if (!*stack || !(*stack)->next)
         return ;
-    tmp = *stack_b;
-    *stack_b = tmp->next;
-    tmp->next = *stack_a;
-    *stack_a = tmp;
+    tmp = *stack;
+    *stack = (*stack)->next;
+    tmp->next = (*stack)->next;
+    (*stack)->next = tmp;
 }
 
-void pa(t_list **stack_a, t_list **stack_b)
+void sa(t_list **stack_a)
 {
-    push(stack_a, stack_b);
-    ft_putstr("pa\n");
+    swap(stack_a);
+    ft_putstr_fd("sa\n", 1);
 }
 
-void pb(t_list **stack_a, t_list **stack_b)
+void sb(t_list **stack_b)
 {
-    push(stack_b, stack_a);
-    ft_putstr("pb\n");
+    swap(stack_b);
+    ft_putstr_fd("sb\n", 1);
+}
+
+void ss(t_list **stack_a, t_list **stack_b)
+{
+    swap(stack_a);
+    swap(stack_b);
+    ft_putstr_fd("ss\n", 1);
 }
