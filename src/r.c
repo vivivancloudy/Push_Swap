@@ -6,7 +6,7 @@
 /*   By: thdinh <thdinh@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 10:58:14 by thdinh            #+#    #+#             */
-/*   Updated: 2025/02/22 11:27:43 by thdinh           ###   ########.fr       */
+/*   Updated: 2025/03/20 14:30:23 by thdinh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 static void rotate(t_list **stack)
 {
-    t_list *first;
+    t_list *tmp;
     t_list *last;
 
-    if (!stack || !*stack || !((*stack)->next))
-        return;
-    first = *stack;
+    if (!stack || !(*stack) || !(*stack)->next)
+        return ;
+    tmp = *stack;
     last = *stack;
-
     while (last->next)
         last = last->next;
-    *stack = first->next;
-    first->next = NULL;
-    last->next = first;
+    *stack = tmp->next;
+    tmp->next = NULL;
+    last->next = tmp;
 }
 
 void ra(t_list **stack_a)

@@ -6,11 +6,24 @@
 /*   By: thdinh <thdinh@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:43:29 by thdinh            #+#    #+#             */
-/*   Updated: 2025/02/26 12:06:53 by thdinh           ###   ########.fr       */
+/*   Updated: 2025/03/20 14:37:05 by thdinh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+int	list_size(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
+}
 
 int	find_min_index(t_list *a)
 {

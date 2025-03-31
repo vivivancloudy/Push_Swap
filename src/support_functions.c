@@ -6,11 +6,12 @@
 /*   By: thdinh <thdinh@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:08:07 by thdinh            #+#    #+#             */
-/*   Updated: 2025/03/08 14:11:01 by thdinh           ###   ########.fr       */
+/*   Updated: 2025/03/20 14:11:19 by thdinh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
 t_list *find_min_lst(t_list **stack)
 {
     t_list *min;
@@ -29,7 +30,6 @@ t_list *find_min_lst(t_list **stack)
     return (min);
 }
 
-// Function to find the maximum element in the stack
 t_list *find_max_lst(t_list **stack)
 {
     t_list *max;
@@ -48,11 +48,11 @@ t_list *find_max_lst(t_list **stack)
     return (max);
 }
 
-// Function to check if a string is a valid number
 int is_valid_number(char *str)
 {
-    int i = 0;
+    int i;
 
+    i = 0;
     if (str[i] == '-' || str[i] == '+')
         i++;
     while (str[i])
@@ -64,41 +64,44 @@ int is_valid_number(char *str)
     return (1);
 }
 
-// Function to check if all elements in the stack are unique
 int is_unique(t_list *stack)
 {
     t_list *current;
-    t_list *next;
+    t_list *temp;
 
+    if (!stack)
+        return (0);
     current = stack;
-    while (current && current->next)
+    while (current)
     {
-        next = current->next;
-        if (current->content == next->content) // Check for equality
+        temp = current->next;
+        while (temp)
         {
-            return 0;  // Not unique
+            if (current->index == temp->index)
+                return (0);
+            temp = temp->next;
         }
-        current = next;
+        current = current->next;
     }
-    return 1;  // Unique
+    return (1);
 }
-
-// Function to check if the stack is sorted
 int is_sorted(t_list **a, int count)
 {
-    t_list *temp;
+    t_list *current;
     int i;
 
-    if (!a || !(*a))  // Check for empty stack
-        return (1);
-    temp = *a;
+    if (!a || !*a)
+        return (0);
+    current = *a;
     i = 0;
-    while (temp->next && i < count - 1)
+    while (current && current->next)
     {
-        if (temp->index > temp->next->index)
-            return (0);  // List is not sorted
-        temp = temp->next;
+        if (current->index > current->next->index)
+            return (0);
+        current = current->next;
         i++;
     }
-    return (1);  // List is sorted
+    if (i == count - 1)
+        return (1);
+    return (0);
 }
